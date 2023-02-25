@@ -1,6 +1,6 @@
 import React from 'react';
 import className from 'classnames';
-import 'components/InterviewerItemList.scss';
+import 'components/InterviewerListItem.scss';
 
 export default function InterviewerListItem(props) {
 
@@ -17,7 +17,7 @@ export default function InterviewerListItem(props) {
   }
 
   return (
-    <li className={interviewerClass} onClick={() => props.setInterviewer(props.id)}>
+    <li className={interviewerClass} onClick={props.setInterviewer}>
       <img
         className="interviewers__item-image"
         src={props.avatar}
