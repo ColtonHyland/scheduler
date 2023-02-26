@@ -8,9 +8,10 @@ import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
 import InterviewerListItem from 'components/InterviewerListItem';
 import InterviewerList from 'components/InterviewerList';
-import Appointment from "components/Appointment/index.js";
-import Header from 'components/Appointment/Header.js';
-import Empty from 'components/Appointment/Empty.js';
+import Appointment from "components/Appointment/index";
+import Header from 'components/Appointment/Header';
+import Empty from 'components/Appointment/Empty';
+import Show from 'components/Appointment/Show';
 
 storiesOf("Button", module)
   .addParameters({
@@ -101,8 +102,8 @@ storiesOf("InterviewerListItem", module)
       name={interviewer.name}
       avatar={interviewer.avatar}
       setInterviewer={() => action("setInterviewer")(interviewer.id)}
-  />
-));
+    />
+  ));
 
 const interviewers = [
   { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
@@ -111,13 +112,13 @@ const interviewers = [
   { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
 ];
-  
+
 storiesOf("InterviewerList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   })
-.add("Initial", () => (
-  <InterviewerList
+  .add("Initial", () => (
+    <InterviewerList
       interviewers={interviewers}
     />
   ))
@@ -136,11 +137,11 @@ storiesOf("InterviewerList", module)
 
 storiesOf("Appointment", module)
   .addParameters({
-      backgrounds: [{ name: "white", value: "#fff", default: true }]
-    })
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
   .add("Appointment", () => <Appointment />)
-  .add("Appointment with Time", () => <Appointment time="12pm"/>
-    )
+  .add("Appointment with Time", () => <Appointment time="12pm" />
+  );
 
 storiesOf("Appointment", module)
   .addParameters({
@@ -149,4 +150,5 @@ storiesOf("Appointment", module)
   .add("Appointment", () => <Appointment />)
   .add("Appointment with Time", () => <Appointment time="12pm" />)
   .add("Header", () => <Header time="12pm" />)
-  .add("Empty.js", () => <Empty onAdd={action("setDay")} />)
+  .add("Empty", () => <Empty onAdd={action("setDay")} />)
+  .add("Show", () => <Show student="Lydia Miller-Jones" interviewer="Sylvia Palmer" onEdit={action("onEdit")} onDelete={action("onDelete")} />)
