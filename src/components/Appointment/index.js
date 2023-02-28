@@ -7,7 +7,7 @@ import Empty from 'components/Appointment/Empty.js';
 export default function Appointment(props) {
 
   const showAppointment = () => {
-    return (props.interview ?  <Show
+    return (props.interview ? <Show
       student={props.interview.student}
       interviewer={props.interview.interviewer.name}
       onEdit={props.onEdit}

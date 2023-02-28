@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import "components/Application.scss";
 import DayList from "components/DayList";
 import Appointment from "components/Appointment";
@@ -61,11 +62,13 @@ const appointments = {
 };
 
 const appointmentList = Object.values(appointments).map((appointment) => {
-  <Appointment
+  return <Appointment
     key={appointment.id}
     {...appointment}
   />
-})
+});
+
+console.log(appointmentList)
 
 
 export default function Application(props) {
@@ -79,7 +82,7 @@ export default function Application(props) {
           className="sidebar--centered"
           src="images/logo.png"
           alt="Interview Scheduler"
-        />8888
+        />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu"><DayList
           days={days}
