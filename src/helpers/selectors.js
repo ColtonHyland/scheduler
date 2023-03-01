@@ -12,8 +12,7 @@ export function getAppointmentsForDay(state, day) {
 }
 
 export function getInterview(state, interview) {
-
-  const filterInterview = state.interviews.find(currIntv => 
-    currIntv)
+  //...return an object that contains the interview data if it is passed an object that contains an interviewer
+  return !interview ? null : {student: interview.student, interviewer: state.interviewers[interview.interviewer]}
 
 }
