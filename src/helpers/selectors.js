@@ -10,3 +10,10 @@ export function getAppointmentsForDay(state, day) {
   return !filterDays ? [] : filterDays.appointments.map(apptID =>
     state.appointments[apptID]);
 }
+
+export function getInterview(state, interview) {
+
+  const filterInterview = state.interviews.find(currIntv => 
+    currIntv)
+
+}
