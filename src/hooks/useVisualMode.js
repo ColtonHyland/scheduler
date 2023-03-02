@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 //a Hook that allows our Appointment components to keep track of the "mode" that they are in as a user interacts with them to do things like create a new appointment, delete an appointment, etc
 
