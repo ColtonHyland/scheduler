@@ -16,3 +16,10 @@ export function getInterview(state, interview) {
   return !interview ? null : {student: interview.student, interviewer: state.interviewers[interview.interviewer]}
 
 }
+
+export function getInterviewersForDay(state, day) {
+  //... returns an arry of interviewers for that day
+  
+  const filterDays = state.days.find(currDay => currDay.name === day);
+  return !filterDays ? [] : filterDays.interviewers.map(apptID => state.interviewers[apptID]);
+};
