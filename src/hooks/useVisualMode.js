@@ -4,12 +4,12 @@ import { useState } from 'react';
 
 export default function useVisualMode(initMode) {
 
-  //take an initial argument to set the mode state
-  //history array to the useVisualMode hook
+  //hook state defaults to an initial mode
   const [history, setHistory] = useState([initMode]);
 
-  //take in a new mode and update the mode state with the new value
+  //changes mode to a new 
   const transition = (newMode, replace = false) => {
+    //either the mode history is replaced or appended 
     if(replace) {
       setHistory((prev) => [...prev.slice(0, -1), newMode]);
     } else {
@@ -17,20 +17,21 @@ export default function useVisualMode(initMode) {
     }
   };
 
-  //transition back to our previous mode
+  //moves the mode back one position
   const back = () => {
-    //history limit condition
+    //limits the history from being empties
     if(history.length < 2) {
       return;
     }
-    //history is reduced by the current mode
+    //history is set to the current minus the current mode
     setHistory((prev) => {
-      const newHistory = [...prev];
-      newHistory.pop();
-      return newHistory;
+      const historyBack = [...prev];
+      historyBack.pop();
+      return historyBack;
     });
   };
 
+  //the latest mode of the current state
   const mode = history.slice(-1)[0];
 
   return { mode, transition, back };
