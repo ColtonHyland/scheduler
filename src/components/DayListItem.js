@@ -14,7 +14,7 @@ export default function DayListIem(props) {
   //selects the readout of spots to user
   const formatSpots = (spots) => {
     if (spots === 0) {
-      return "No spots remaining";
+      return "no spots remaining";
     }
     if (spots === 1) {
       return "1 spot remaining";
