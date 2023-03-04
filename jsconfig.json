@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "http://localhost:8000",
+    "baseUrl": "src",
     "viewportWidth": 1280,
     "viewportHeight": 720
   }
