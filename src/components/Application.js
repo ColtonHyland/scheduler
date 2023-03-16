@@ -12,13 +12,20 @@ import useApplicationData from "hooks/useApplicationData";
 //contains all compontents for the scheduler user interface
 export default function Application(props) {
 
-  //state and state functions
+  //states and state functions
   const {
     state,
     setDay,
+    setSpot,
     bookInterview,
     cancelInterview,
   } = useApplicationData();
+
+  //dynamically changes spot as new interviews are booked/removed
+  const updateSpot = function (increase) {
+    setSpot(increase, state.day);
+  };
+
 
   //appointments and interviews for the chosen day
   const dailyAppointments = getAppointmentsForDay(state, state.day);
@@ -35,6 +42,7 @@ export default function Application(props) {
         {...appointment}
         interview={interview}
         interviewers={dailyInterviewers}
+        updateSpot={updateSpot}
         bookInterview={bookInterview}
         cancelInterview={cancelInterview}
       />

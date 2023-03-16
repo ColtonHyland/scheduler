@@ -12,7 +12,7 @@ export default function useApplicationData() {
     interviewers: {},
   });
 
-  //chenages the day in the state
+  //changes the day in the state
   const setDay = (day) => setState({ ...state, day });
 
   //finds how many open appointment spots a day has in the state
@@ -27,6 +27,22 @@ export default function useApplicationData() {
       }
     }
     return count;
+  };
+
+  //changes spots for the day dynamically
+  const setSpot = (increase, selectedDay) => {
+    setState((prev) => {
+      let tempState = { ...prev };
+      //filters for the change in the day spots
+      tempState.days.filter((day) => {
+        //returns a change to the state if a spot has changed
+        if (day.name === selectedDay) {
+          return increase ? day.spots++ : day.spots--;
+        }
+      });
+      //happy path
+      return tempState;
+    });
   };
 
   //gives days an updated version of their spots available
@@ -100,5 +116,5 @@ export default function useApplicationData() {
     });
   }, []);
 
-  return { state, setDay, bookInterview, cancelInterview };
+  return { state, setDay, setSpot, bookInterview, cancelInterview };
 }

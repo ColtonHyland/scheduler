@@ -3,12 +3,13 @@ import DayListIem from "./DayListItem";
 
 //contains the list of days components
 export default function DayList(props) {
+  const days = [...props.days]
 
   //list of days with their accompanying properties
-  const daysArr = props.days.map((day) => {
+  const daysArr = days.map((day) => {
     return (
       <DayListIem
-        key={day.id}
+        key={day.name}
         name={day.name}
         spots={day.spots}
         selected={day.name === props.day}

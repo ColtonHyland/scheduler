@@ -29,7 +29,7 @@ export default function Appointment(props) {
   );
 
   //enters the interview into the database
-  const save = (name, interviewer) => {
+  const save = (name, interviewer, isEdit) => {
     //interview object to be saved
     const interview = {
       student: name,
@@ -42,7 +42,10 @@ export default function Appointment(props) {
     //-the mode to an error and reverting the previous save
     props
       .bookInterview(props.id, interview)
-      .then(() => transition(SHOW))
+      .then(() => {
+        transition(SHOW);
+        if (mode !== EDIT) props.updateSpot(false);
+      })
       .catch(() => transition(ERROR_SAVE, true));
   };
 
@@ -62,7 +65,10 @@ export default function Appointment(props) {
     //-error in the deletion process
     props
       .cancelInterview(props.id)
-      .then(() => transition(EMPTY))
+      .then(() => {
+        transition(EMPTY);
+        props.updateSpot(true);
+      })
       .catch(() => transition(ERROR_DELETE, true));
   };
 
